@@ -1,5 +1,5 @@
 # https://taskfile.dev
-version: '3'
+version: "3"
 
 silent: true
 
@@ -15,6 +15,7 @@ vars:
   DEV_TOOLS: |
     github.com/daixiang0/gci@v0.10.1
     mvdan.cc/gofumpt@v0.4.0
+    github.com/kazhuravlev/options-gen/cmd/options-gen@latest
 
 tasks:
   default:
@@ -44,7 +45,7 @@ tasks:
       - echo "- Lint"
       - mkdir -p {{.GOLANGCI_LINT_CACHE}}
       - task: lint:cmd
-        vars: {CLI_ARGS: "run -v --fix --timeout=5m ./..."}
+        vars: { CLI_ARGS: "run -v --fix --timeout=5m ./..." }
 
   lint:cmd:
     cmds:
@@ -68,8 +69,9 @@ tasks:
   dev-tools:install:
     cmds:
       - echo "- Install dev tools"
-      - go install github.com/daixiang0/gci@latest
-      - go install mvdan.cc/gofumpt@latest
+      - go install github.com/daixiang0/gci@0.13.5
+      - go install mvdan.cc/gofumpt@0.7.0
+      - go install github.com/kazhuravlev/options-gen/cmd/options-gen@0.33.1
 
   generate:
     - echo "Run go generate..."
